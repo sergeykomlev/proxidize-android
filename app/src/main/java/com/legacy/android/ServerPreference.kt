@@ -59,6 +59,26 @@ class ServerPreference private constructor(private val context: Context) {
         }
     }
 
+    suspend fun saveProxyUsername(proxyUsername: String) {
+        context.dataStore.edit { pref ->
+            pref[stringPreferencesKey("proxyUsername")] = proxyUsername
+        }
+    }
+
+    suspend fun saveProxyPassword(proxyPassword: String) {
+        context.dataStore.edit { pref ->
+            pref[stringPreferencesKey("proxyPassword")] = proxyPassword
+        }
+    }
+
+    private fun retrieveProxyUsername(pref: Preferences): String {
+        return pref[stringPreferencesKey("proxyUsername")] ?: ""
+    }
+
+    private fun retrieveProxyPassword(pref: Preferences): String {
+        return pref[stringPreferencesKey("ProxyPassword")] ?: ""
+    }
+
     suspend fun saveUserAndPassword(userPass: String) {
         context.dataStore.edit { pref ->
             pref[stringPreferencesKey("userPass")] = userPass

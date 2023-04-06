@@ -490,7 +490,11 @@ class HomeFragment : Fragment() {
 
     private fun initializePorts(resetPorts: Boolean) {
         val (port1, port2, port3) = runBlocking { preference.retrievePorts() }
+        val proxyUsername = runBlocking { preference.retrieveProxyUsername() }
+        val proxyPassword =  runBlocking { preference.retrieveProxyPassword() }
         val portEmpty = port1 == 0 || port2 == 0 || port3 == 0
+        val proxyUsernameEmpty = proxyUsername == 0
+        val proxyPasswordEmpty = proxyPassword == 0
         if (resetPorts || portEmpty) {
             mRandomPortHttp = getRandomPort()
             mRandomPortWeb = getRandomPort()
@@ -507,10 +511,25 @@ class HomeFragment : Fragment() {
             mRandomPortWeb = port2
             mRandomPortSocks = port3
         }
-
-        user = getAlphaNumericString()
-        pwd = getAlphaNumericString()
-        lifecycleScope.launch { preference.saveUserAndPassword("$user$pwd") }
+        if (proxyUsernameEmpty) {
+            user = getAlphaNumericString()
+            lifecycleScope.launch { 
+                preference.saveProxyUsername("$user")
+            }
+        } else {
+            user = proxyUsername
+        }
+        if (proxyPasswordEmpty) {
+            pwd = getAlphaNumericString()
+            lifecycleScope.launch { 
+                preference.saveProxyPassword("$pwd")
+            }
+        } else {
+            pwd = proxyPassword
+        }
+        lifecycleScope.launch { 
+            preference.saveUserAndPassword("$user$pwd")
+        }
         println(user)
         println(pwd)
     }
