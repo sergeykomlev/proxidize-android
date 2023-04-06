@@ -94,6 +94,48 @@
 
     </com.google.android.material.textfield.TextInputLayout>
 
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/proxy_username"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="16dp"
+        android:hint="@string/proxy_username"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:startIconDrawable="@drawable/username"
+        app:layout_constraintTop_toBottomOf="@+id/token">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/et_proxy_username"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/proxy_password"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="16dp"
+        android:hint="@string/proxy_password"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+         app:startIconDrawable="@drawable/password"
+        app:layout_constraintTop_toBottomOf="@+id/proxy_username">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/et_proxy_password"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
     <com.google.android.material.button.MaterialButton
         android:id="@+id/saveButton"
         style="@style/Widget.MaterialComponents.Button.UnelevatedButton"
@@ -113,7 +155,7 @@
         app:elevation="8dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/token" />
+        app:layout_constraintTop_toBottomOf="@+id/proxy_password" />
 
 <!--    <com.google.android.material.button.MaterialButton-->
 <!--        android:id="@+id/resetButton"-->
@@ -142,6 +184,6 @@
         tools:visibility="visible"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:constraint_referenced_ids="host,bind_port, token, saveButton"/>
+        app:constraint_referenced_ids="host,bind_port,token,proxy_username,proxy_password,saveButton"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

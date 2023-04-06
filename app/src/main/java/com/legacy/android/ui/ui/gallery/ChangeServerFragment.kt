@@ -88,7 +88,8 @@ class ChangeServerFragment : Fragment() {
                             "Custom",
                             binding.etPort.text.toString().toInt(),
                             binding.etToken.text.toString(),
-                            0.0, 0.0
+                            0.0, 
+                            0.0
                         )
                     )
                     preference.saveProxyServer(
@@ -97,9 +98,12 @@ class ChangeServerFragment : Fragment() {
                             "Custom",
                             binding.etPort.text.toString().toInt(),
                             binding.etToken.text.toString(),
-                            0.0, 0.0
+                            0.0, 
+                            0.0
                         )
                     )
+                    preference.saveProxyUsername(binding.etProxyUsername.text.toString())
+                    preference.saveProxyPassword(binding.etProxyPassword.text.toString())
 
                     val values = ContentValues().apply {
                         put("hostIp",binding.etHost.text.toString())

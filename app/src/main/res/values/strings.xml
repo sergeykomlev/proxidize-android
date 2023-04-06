@@ -41,6 +41,8 @@
     <string name="host">Host</string>
     <string name="binding_port">Binding Port</string>
     <string name="token">Token</string>
+    <string name="proxy_username">Custom Username For Proxy</string>
+    <string name="proxy_password">Custom Password For Proxy</string>
     <string name="read_docs">Read docs <a href="https://proxidize.com/android">Here</a></string>
     <string name="copy">Copy</string>
     <string name="http_proxy">HTTP(S) Proxy</string>
